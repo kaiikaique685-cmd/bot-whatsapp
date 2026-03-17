@@ -3,17 +3,21 @@ const fs = require('fs');
 
 const client = new Client({
     authStrategy: new LocalAuth(),
+const client = new Client({
+    authStrategy: new LocalAuth(),
     puppeteer: {
         headless: true,
+        executablePath: '/usr/bin/google-chrome', 
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
             '--disable-dev-shm-usage',
             '--disable-gpu',
             '--no-zygote'
-        ]
+        ],
     }
 });
+
 
 client.on('qr', (qr) => {
     console.log('QR RECEIVED', qr);
