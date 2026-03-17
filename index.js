@@ -5,7 +5,6 @@ const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
         headless: true,
-        // No Railway com Nixpacks, o caminho é esse:
         executablePath: '/usr/bin/google-chrome',
         args: [
             '--no-sandbox',
@@ -18,7 +17,6 @@ const client = new Client({
 });
 
 client.on('qr', (qr) => {
-    // Isso vai desenhar o QR Code no log do Railway
     qrcode.generate(qr, { small: true });
 });
 
