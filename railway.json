@@ -1,0 +1,12 @@
+{
+  "$schema": "https://railway.com/pcp-schema.json",
+  "build": {
+    "builder": "NIXPACKS",
+    "nixpacksConfig": {
+      "providers": ["node"],
+      "setup": {
+        "nixPkgs": ["google-chrome", "nodejs"]
+      }
+    }
+  }
+}
