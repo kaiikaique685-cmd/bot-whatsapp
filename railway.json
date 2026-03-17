@@ -1,0 +1,9 @@
+{
+  "$schema": "https://railway.com/pcp-schema.json",
+  "build": {
+    "builder": "NIXPACKS"
+  },
+  "deploy": {
+    "startCommand": "node index.js"
+  }
+}
