@@ -3,6 +3,33 @@ const fs = require('fs');
 
 const client = new Client({
     authStrategy: new LocalAuth(),
+    puppeteer: {
+        headless: true,
+        executablePath: '/usr/bin/google-chrome',
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-gpu',
+            '--no-zygote'
+        ]
+    }
+});
+
+client.on('qr', (qr) => {
+    console.log('QR RECEIVED', qr);
+});
+
+client.on('ready', () => {
+    console.log('✅ Bot online!');
+});
+
+client.initialize();
+
+// --- CONFIGURAÇÕES ---
+const MEU_NUMERO = '5511939595166@c.us';
+const NOME_BOT = 'Nephor';
+
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
