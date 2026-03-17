@@ -1,9 +1,6 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
 
         // Caso o nixpacks instale em um local específico:
-        executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/google-chrome-stable'
-    }
-});
 
 client.on('qr', (qr) => {
     // Importante: no terminal da Railway você verá o código, 
