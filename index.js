@@ -5,7 +5,13 @@ const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
         headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-gpu',
+            '--no-zygote'
+        ]
     }
 });
 
@@ -20,28 +26,8 @@ client.on('ready', () => {
 client.initialize();
 
 // --- CONFIGURAÇÕES ---
-const MEU_NUMERO = '5511939595166@c.us'; 
+const MEU_NUMERO = '5511939595166@c.us';
 const NOME_BOT = 'Nephor';
-const PREFIXO = '!';
-const PREFIXO_DONO = '.';
-
-// --- BANCO DE DADOS (JSON) ---
-const PATH_DB = './database.json';
-function lerBanco() {
-    if (!fs.existsSync(PATH_DB)) fs.writeFileSync(PATH_DB, JSON.stringify({ usuarios: {} }, null, 2));
-    return JSON.parse(fs.readFileSync(PATH_DB, 'utf-8'));
-}
-function salvarBanco(dados) {
-    fs.writeFileSync(PATH_DB, JSON.stringify(dados, null, 2));
-}
-let db = lerBanco();
-
-    authStrategy: new LocalAuth(),
-    puppeteer: { args: ['--no-sandbox', '--disable-setuid-sandbox'] }
-});
-
-client.on('qr', qr => qrcode.generate(qr, { small: true }));
-client.on('ready', () => console.log('Nephor Online com Música e Pets!'));
 
 client.on('message', async msg => {
     const chat = await msg.getChat();
